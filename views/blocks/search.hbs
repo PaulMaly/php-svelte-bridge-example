@@ -1,0 +1,9 @@
+<input bind:value="query" class="form-control mr-sm-2" placeholder="Search">
+<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+<div class="list-group">
+    {{#each results as result}}
+    <a href="#" class="list-group-item list-group-item-action active">
+        {{result.title}}
+    </a>
+    {{/each}}
+</div>

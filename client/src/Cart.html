@@ -1,0 +1,33 @@
+<template src="../../views/blocks/cart.hbs" lang="hbs"></template>
+
+<script>
+    export default {
+        data() {
+            return {
+                products: []
+            };
+        },
+        computed: {
+            total: ({ products }) => products.reduce((total, p) => {
+                total += p.price * p.count;
+                return total;
+            }, 0)
+        },
+        methods: {
+            count(i, count) {
+                if ( ! count) return this.remove(i);
+                const products = [...this.get().products];
+                products[i].count = count;
+                this.set({ products });
+            },
+            remove(i) {
+                const products = [...this.get().products];
+                products.splice(i, 1);
+                this.set({ products });
+            },
+            checkout() {
+                alert('Send POST request for checkout');
+            }
+        }
+    };
+</script>

@@ -1,0 +1,36 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Product Title</th>
+      <th scope="col">Price</th>
+      <th scope="col">Count</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each products as product, i}}
+    <tr class="table-light">
+        <td>{{product.title}}</td>
+        <td>${{product.price}}</td>
+        <td>{{product.count}}</td>
+        <td>
+            <div class="btn-group" role="group">
+                <button on:click="count(i, product.count - 1)" class="btn btn-secondary" title="Buy less">-</button>
+                <button on:click="count(i, product.count + 1)" class="btn btn-secondary" title="Buy more">+</button>
+                <button on:click="remove(i)" class="btn btn-secondary" title="Remove">x</button>
+            </div>
+        </td>
+    </tr>
+    {{/each}}
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="3">
+        <h6>Total: ${{ total }}</h6>
+      </td>
+      <td>
+        <button on:click="checkout()" class="btn btn-primary btn-lg">Checkout</button>
+      </td>
+    </tr>
+  </tfoot>
+</table>

@@ -1,0 +1,21 @@
+<template src="../../views/blocks/search.hbs" lang="hbs"></template>
+
+<script>
+    export default {
+        data() {
+            return {
+                query: '',
+                products: []
+            };
+        },
+        computed: {
+            results: ({ query, products }) => query && products.filter(p => {
+                return p.title.toLowerCase().includes(query.toLowerCase());
+            })
+        }
+    };
+</script>
+
+<style>
+    .list-group { position: absolute; right: 1rem; top: 60px; min-width: 300px; }
+</style>
